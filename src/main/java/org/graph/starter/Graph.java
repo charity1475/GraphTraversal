@@ -1,9 +1,8 @@
-package org.graph;
+package org.graph.starter;
 
 import java.util.ArrayList;
-import org.graph.starter.Vertex;
 
-public class Main {
+public class Graph {
   /**
    * The list of vertices in the graph.
    */
@@ -11,7 +10,7 @@ public class Main {
   private boolean weighted;
   private boolean directed;
 
-  public Main(boolean weighted, boolean directed) {
+  public Graph(boolean weighted, boolean directed) {
     this.vertices = new ArrayList<Vertex>();
     this.weighted = weighted;
     this.directed = directed;
@@ -49,8 +48,31 @@ public class Main {
     }
   }
 
+  public ArrayList<Vertex> getVertices() {
+    return this.vertices;
+  }
 
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+  public boolean isWeighted() {
+    return this.weighted;
+  }
+
+  public boolean isDirected() {
+    return this.directed;
+  }
+
+  public Vertex getVertexByValue(String value) {
+    for (Vertex vertex : this.vertices) {
+      if (vertex.getData().equals(value)) {
+        return vertex;
+      }
     }
+    return null;
+  }
+
+  public void printGraph(){
+    for(Vertex vertex : this.vertices){
+      System.out.println("Vertex: " + vertex.getData());
+      vertex.printEdges();
+    }
+  }
 }
